@@ -15,13 +15,13 @@ const menuEl = document.querySelector('.js-menu');
 const createMenuEl = createMenuMarkUp( markUp);
 menuEl.insertAdjacentHTML('beforeend', createMenuEl);
 
-isSaveTheme();
+
 
 function createMenuMarkUp (markUp) {
   //console.log( markUp);
   return menuMarkUpTpl (markUp);
 }
-
+isSaveTheme();
 toggleTheme.addEventListener('change', onReverseTheme);
 
 function onReverseTheme(e) {
@@ -31,20 +31,17 @@ function onReverseTheme(e) {
     localStorage.setItem('theme', JSON.stringify(Theme.DARK));
   } else {
     document.body.classList.remove(Theme.DARK);
-    document.body.classList.add(Theme.LIGHT);
+   document.body.classList.add(Theme.LIGHT);
     localStorage.setItem('theme', JSON.stringify(Theme.LIGHT));
   }
-}
+};
 
 function isSaveTheme() {
-  const parsedTheme
   const savedTheme = localStorage.getItem('theme');
-
-  if (savedTheme.checked) {
-    console.log(savedTheme);
+  if (savedTheme) {
     toggleTheme.checked = savedTheme;
-  }
-}
+  }  
+};
   
  
   
