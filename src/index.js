@@ -4,16 +4,47 @@ import markUp from '../menu.json';
 //console.log(markUp);
 import '../src/styles.css';
 
-const menuEl = document.querySelector('.js-menu');
-//console.log(menuEl);
-const createMenuEl = createMenuMarkUp( markUp);
+const Theme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
 
+const toggleTheme = document.getElementById('theme-switch-toggle');
+
+const menuEl = document.querySelector('.js-menu');
+const createMenuEl = createMenuMarkUp( markUp);
 menuEl.insertAdjacentHTML('beforeend', createMenuEl);
+
+isSaveTheme();
 
 function createMenuMarkUp (markUp) {
   //console.log( markUp);
   return menuMarkUpTpl (markUp);
 }
 
-const ingredientsEl = document.querySelector('markUp');
-console.log(ingredientsEl);
+toggleTheme.addEventListener('change', onReverseTheme);
+
+function onReverseTheme(e) {
+  if (e.target.checked) {
+    document.body.classList.remove(Theme.LIGHT);
+    document.body.classList.add(Theme.DARK);
+    localStorage.setItem('theme', JSON.stringify(Theme.DARK));
+  } else {
+    document.body.classList.remove(Theme.DARK);
+    document.body.classList.add(Theme.LIGHT);
+    localStorage.setItem('theme', JSON.stringify(Theme.LIGHT));
+  }
+}
+
+function isSaveTheme() {
+  const parsedTheme
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme.checked) {
+    console.log(savedTheme);
+    toggleTheme.checked = savedTheme;
+  }
+}
+  
+ 
+  
