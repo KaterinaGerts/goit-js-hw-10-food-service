@@ -50,9 +50,7 @@ function savedTheme() {
     localStorage.setItem('theme', Theme.DARK)
     toggleTheme.checked = true; 
     return;
-  }  
-  
-  if(saveTheme === Theme.LIGHT) {
+  }  else {
     BODY.classList.remove(Theme.DARK)
     BODY.classList.add(Theme.LIGHT)
     localStorage.setItem('theme', Theme.LIGHT) 
